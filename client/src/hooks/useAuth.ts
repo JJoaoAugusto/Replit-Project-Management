@@ -60,8 +60,10 @@ export function useAuth() {
     onSuccess: (data) => {
       setToken(data.token);
       queryClient.setQueryData(['/api/auth/user'], data.user);
-      // Invalidate queries to trigger re-fetching with new token
-      queryClient.invalidateQueries({ queryKey: ['/api/auth/user'] });
+      // Force immediate UI update
+      setTimeout(() => {
+        window.location.href = '/';
+      }, 100);
     },
   });
 
@@ -78,14 +80,18 @@ export function useAuth() {
     onSuccess: (data) => {
       setToken(data.token);
       queryClient.setQueryData(['/api/auth/user'], data.user);
-      // Invalidate queries to trigger re-fetching with new token
-      queryClient.invalidateQueries({ queryKey: ['/api/auth/user'] });
+      // Force immediate UI update
+      setTimeout(() => {
+        window.location.href = '/';
+      }, 100);
     },
   });
 
   const logout = () => {
     setToken(null);
     queryClient.clear();
+    // Force immediate redirect to login
+    window.location.href = '/';
   };
 
   return {

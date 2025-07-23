@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useAuth } from "@/hooks/useAuth";
-import { getAuthHeaders } from "@/lib/auth";
+// Remove import - using apiRequest instead
 import { apiRequest } from "@/lib/queryClient";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
@@ -51,27 +51,13 @@ export default function Dashboard() {
   const [deletingProject, setDeletingProject] = useState<Project | null>(null);
 
   // Fetch projects
-  const { data: projects = [], isLoading: isLoadingProjects } = useQuery({
+  const { data: projects = [], isLoading: isLoadingProjects } = useQuery<Project[]>({
     queryKey: ["/api/projects"],
-    queryFn: async () => {
-      const response = await fetch("/api/projects", {
-        headers: getAuthHeaders(),
-      });
-      if (!response.ok) throw new Error("Failed to fetch projects");
-      return response.json();
-    },
   });
 
   // Fetch project stats
-  const { data: stats } = useQuery({
+  const { data: stats } = useQuery<{ total: number; pendente: number; andamento: number; concluido: number }>({
     queryKey: ["/api/projects/stats"],
-    queryFn: async () => {
-      const response = await fetch("/api/projects/stats", {
-        headers: getAuthHeaders(),
-      });
-      if (!response.ok) throw new Error("Failed to fetch stats");
-      return response.json();
-    },
   });
 
   // Delete project mutation

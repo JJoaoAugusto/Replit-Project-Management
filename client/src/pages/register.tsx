@@ -23,6 +23,12 @@ export default function Register() {
 
   const onSubmit = (data: RegisterData) => {
     registerUser(data, {
+      onSuccess: () => {
+        toast({
+          title: "Conta criada com sucesso!",
+          description: "Redirecionando para o dashboard...",
+        });
+      },
       onError: (error: any) => {
         toast({
           title: "Erro no cadastro",

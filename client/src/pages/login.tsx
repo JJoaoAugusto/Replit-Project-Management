@@ -26,6 +26,12 @@ export default function Login() {
 
   const onSubmit = (data: LoginData) => {
     login(data, {
+      onSuccess: () => {
+        toast({
+          title: "Login realizado com sucesso!",
+          description: "Redirecionando para o dashboard...",
+        });
+      },
       onError: (error: any) => {
         toast({
           title: "Erro no login",
