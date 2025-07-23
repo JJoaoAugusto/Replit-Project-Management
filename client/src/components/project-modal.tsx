@@ -148,6 +148,7 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
               {...register("name")}
               id="name"
               placeholder="Ex: Sistema de E-commerce"
+              required
               className="mt-1"
             />
             {errors.name && (
@@ -199,6 +200,7 @@ export function ProjectModal({ isOpen, onClose, project }: ProjectModalProps) {
                 {...register("startDate")}
                 id="startDate"
                 type="date"
+                required
                 className="mt-1"
               />
               {errors.startDate && (

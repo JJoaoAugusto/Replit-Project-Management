@@ -36,21 +36,24 @@ export const insertProjectSchema = createInsertSchema(projects).omit({
 });
 
 export const loginSchema = z.object({
-  email: z.string().email("Email inválido"),
-  password: z.string().min(6, "Senha deve ter pelo menos 6 caracteres"),
+  email: z.string().min(1, "Email é obrigatório").email("Email inválido"),
+  password: z.string().min(1, "Senha é obrigatória").min(6, "Senha deve ter pelo menos 6 caracteres"),
 });
 
 export const registerSchema = insertUserSchema.extend({
-  password: z.string().min(6, "Senha deve ter pelo menos 6 caracteres"),
-  confirmPassword: z.string().min(6, "Confirmação de senha obrigatória"),
+  name: z.string().min(1, "Nome é obrigatório").min(2, "Nome deve ter pelo menos 2 caracteres"),
+  email: z.string().min(1, "Email é obrigatório").email("Email inválido"),
+  password: z.string().min(1, "Senha é obrigatória").min(6, "Senha deve ter pelo menos 6 caracteres"),
+  confirmPassword: z.string().min(1, "Confirmação de senha é obrigatória"),
 }).refine((data) => data.password === data.confirmPassword, {
   message: "Senhas não conferem",
   path: ["confirmPassword"],
 });
 
 export const projectSchema = insertProjectSchema.extend({
+  name: z.string().min(1, "Nome do projeto é obrigatório").min(2, "Nome deve ter pelo menos 2 caracteres"),
   status: z.enum(["pendente", "andamento", "concluido"]),
-  startDate: z.string().refine((date) => !isNaN(Date.parse(date)), {
+  startDate: z.string().min(1, "Data de início é obrigatória").refine((date) => !isNaN(Date.parse(date)), {
     message: "Data inválida",
   }),
 });

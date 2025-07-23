@@ -73,7 +73,7 @@ export class DatabaseStorage implements IStorage {
     const result = await db
       .delete(projects)
       .where(and(eq(projects.id, id), eq(projects.userId, userId)));
-    return result.rowCount > 0;
+    return (result.rowCount || 0) > 0;
   }
 
   async getProjectStats(userId: string): Promise<{ total: number; pendente: number; andamento: number; concluido: number }> {

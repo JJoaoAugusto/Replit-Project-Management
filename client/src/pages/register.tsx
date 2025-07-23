@@ -60,6 +60,7 @@ export default function Register() {
                   id="name"
                   type="text"
                   placeholder="João Silva"
+                  required
                   className="appearance-none block w-full px-3 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary transition duration-150"
                 />
                 {errors.name && (
@@ -79,6 +80,7 @@ export default function Register() {
                   type="email"
                   autoComplete="email"
                   placeholder="seu@email.com"
+                  required
                   className="appearance-none block w-full px-3 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary transition duration-150"
                 />
                 {errors.email && (
@@ -97,6 +99,7 @@ export default function Register() {
                   id="password"
                   type="password"
                   placeholder="••••••••"
+                  required
                   className="appearance-none block w-full px-3 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary transition duration-150"
                 />
                 {errors.password && (
@@ -115,6 +118,7 @@ export default function Register() {
                   id="confirmPassword"
                   type="password"
                   placeholder="••••••••"
+                  required
                   className="appearance-none block w-full px-3 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary transition duration-150"
                 />
                 {errors.confirmPassword && (

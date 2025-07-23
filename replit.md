@@ -7,6 +7,8 @@ ProjectHub is a full-stack web application for project management built with Rea
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+Validation Requirements: All form fields must be validated on both frontend and backend - no empty fields allowed.
+Authentication Flow: Automatic redirection after login/register without manual page refresh.
 
 ## System Architecture
 

@@ -62,6 +62,7 @@ export default function Login() {
                   type="email"
                   autoComplete="email"
                   placeholder="seu@email.com"
+                  required
                   className="appearance-none block w-full px-3 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary transition duration-150"
                 />
                 {errors.email && (
@@ -81,6 +82,7 @@ export default function Login() {
                   type="password"
                   autoComplete="current-password"
                   placeholder="••••••••"
+                  required
                   className="appearance-none block w-full px-3 py-3 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary focus:border-primary transition duration-150"
                 />
                 {errors.password && (
